@@ -1,6 +1,6 @@
 import os
 from slackclient import SlackClient
-sc = SlackClient('xoxb-263048318119-850452239637-4nM0gDLuV0IPHikWIBs4bWMn')
+token = ''
 
 def list_users():
 	try:
@@ -15,13 +15,14 @@ def send_message(userid):
 	try:
 		group = sc.api_call(
 			"usergroups	.create",
-			token="xoxb-263048318119-850452239637-4nM0gDLuV0IPHikWIBs4bWMn",
+			token=token,
 			channels="{0},UB7DJ5SL9".format(userid),
 			name="Reminder {0}".format(userid),
 		)
 	except e:
 		print(e.message)
 		print("group error")
+
 	if group['ok']:
 		sc.api_call(
 			"chat.postMessage",
@@ -33,6 +34,9 @@ def send_message(userid):
 		)
 
 if __name__ == '__main__':
+	token = raw_input("Enter your token \n")
+	print(token)
+	sc = SlackClient(token)
 	users = list_users()
 	if users:
 		print("Users: ")
