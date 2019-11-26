@@ -34,7 +34,7 @@ def send_message(userid):
 		)
 
 if __name__ == '__main__':
-	token = raw_input("Enter your token \n")
+	token = open(r"token.txt","r").read() # store actual in txt file and don't upload to github for security purposes
 	print(token)
 	sc = SlackClient(token)
 	users = list_users()
