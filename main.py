@@ -29,19 +29,22 @@ def send_message(userid):
 
 if __name__ == '__main__':
 	token = open(r"token.txt","r").read() # store actual in txt file and don't upload to github for security purposes
+	if not token:
+		print("Token not found")
+		break
+
 	sc = SlackClient(token)
+	
 	users = list_users()
 
 	channel_members = sc.api_call( # get ids of all users already in the channel
 						"channels.info",
 						channel="CQCKS8UN6"
 					)['channel']['members']
+	
 	if users:
 		for u in users:
-			try:
-				if not u['id'] in channel_members: # don't message users already in the channel
-					send_message(u['id'])
-			except:
-				pass
+			if not u['id'] in channel_members: # don't message users already in the channel
+				send_message(u['id'])
 	else:
 		print("unable to authenticate")
