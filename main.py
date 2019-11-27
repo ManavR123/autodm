@@ -33,9 +33,9 @@ if __name__ == '__main__':
 	users = list_users()
 
 	channel_members = sc.api_call( # get ids of all users already in the channel
-											"channels.info",
-											channel="CQCKS8UN6"
-										)['channel']['members']
+						"channels.info",
+						channel="CQCKS8UN6"
+					)['channel']['members']
 	if users:
 		for u in users:
 			try:
