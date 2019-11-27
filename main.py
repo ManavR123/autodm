@@ -31,7 +31,6 @@ if __name__ == '__main__':
 	token = open(r"token.txt","r").read() # store actual in txt file and don't upload to github for security purposes
 	if not token:
 		print("Token not found")
-		break
 
 	sc = SlackClient(token)
 	
