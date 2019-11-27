@@ -1,8 +1,8 @@
-##Autodm
+# Autodm
 
 SlackBot code to direct message everyone in a workspace, except people in a certain channel.
 
-#To Get Started
+## To Get Started
 
 `pip install virtualenv`
 
